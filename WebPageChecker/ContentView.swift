@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var checker = PageChecker()
-    @State private var urlString: String = "https://apple.com"
+    @State private var urlString: String = "https://animating-country-ahead.ngrok-free.dev"
 
     var body: some View {
         NavigationStack {
