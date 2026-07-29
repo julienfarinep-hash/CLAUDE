@@ -3,7 +3,8 @@
 **Cible** : VM Debian 13, IP `80.251.100.175`, domaine `pbx1-procom.dyndns.org`
 **Approche** : stack **conteneurisée** `pbx-cloud` (edge Kamailio+rtpengine en host + 1 Asterisk 21/tenant, bridge 172.28.0.0/24)
 **Pilote (MAIN)** : orchestration OPS + CHECK via `/home/julien/discussion`
-**Dernière mise à jour** : 2026-07-29 — ⏸ PAUSE : refonte du mode de fonctionnement MAIN/OPS/CHECK (demande Julien)
+**CANAL = GitHub `CLAUDE/pbx-agents/`** (depuis 2026-07-29 — voir PROTOCOLE_ECHANGE.md). Le dossier local n'est plus le canal.
+**Dernière mise à jour** : 2026-07-29 — bascule canal GitHub + onboarding OPS/CHECK (ops_task_018 / check_task_011)
 
 ## ⏸ PAUSE ORCHESTRATION (Julien) — reprise après redéfinition du mode MAIN/OPS/CHECK
 MAIN ne pilote plus de nouvelle étape tant que le nouveau fonctionnement n'est pas défini.
