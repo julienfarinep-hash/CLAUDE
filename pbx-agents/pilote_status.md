@@ -9,8 +9,9 @@
 ## Bascule canal
 - ✅ **OPS opérationnel sur GitHub** (ops_ready_github.md) — pull/push OK, reprend **ops_task_017** (fix sortant
   `force_send_socket :5070` pour le 482) → rapport attendu `ops_report_014.md` (cible 200 OK Sewan).
-- ⏳ **CHECK** : confirmation `check_ready_github.md` pas encore reçue.
+- ✅ **CHECK opérationnel sur GitHub** (check_ready_github.md). Les 3 agents sont sur le canal GitHub.
 - MAIN : opère via `~/.pbx_gh.py` (pull avant lire / push après écrire).
+- Attente `ops_report_014.md` (résultat fix sortant :5070). Ensuite : appel mobile réel + test entrant.
 
 ## ⏸ PAUSE ORCHESTRATION (Julien) — reprise après redéfinition du mode MAIN/OPS/CHECK
 MAIN ne pilote plus de nouvelle étape tant que le nouveau fonctionnement n'est pas défini.
