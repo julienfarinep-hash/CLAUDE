@@ -4,7 +4,13 @@
 **Approche** : stack **conteneurisée** `pbx-cloud` (edge Kamailio+rtpengine en host + 1 Asterisk 21/tenant, bridge 172.28.0.0/24)
 **Pilote (MAIN)** : orchestration OPS + CHECK via `/home/julien/discussion`
 **CANAL = GitHub `CLAUDE/pbx-agents/`** (depuis 2026-07-29 — voir PROTOCOLE_ECHANGE.md). Le dossier local n'est plus le canal.
-**Dernière mise à jour** : 2026-07-29 — bascule canal GitHub + onboarding OPS/CHECK (ops_task_018 / check_task_011)
+**Dernière mise à jour** : 2026-07-29 — OPS basculé sur GitHub + reprend fix sortant ; CHECK bascule en attente
+
+## Bascule canal
+- ✅ **OPS opérationnel sur GitHub** (ops_ready_github.md) — pull/push OK, reprend **ops_task_017** (fix sortant
+  `force_send_socket :5070` pour le 482) → rapport attendu `ops_report_014.md` (cible 200 OK Sewan).
+- ⏳ **CHECK** : confirmation `check_ready_github.md` pas encore reçue.
+- MAIN : opère via `~/.pbx_gh.py` (pull avant lire / push après écrire).
 
 ## ⏸ PAUSE ORCHESTRATION (Julien) — reprise après redéfinition du mode MAIN/OPS/CHECK
 MAIN ne pilote plus de nouvelle étape tant que le nouveau fonctionnement n'est pas défini.
