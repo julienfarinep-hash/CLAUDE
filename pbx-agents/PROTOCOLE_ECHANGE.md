@@ -2,8 +2,16 @@
 
 **En vigueur : 2026-07-29.** Décision Julien : **tout l'échange passe par GitHub**, plus par le dossier local.
 
+## 🔀 CHANGEMENT DE CANAL (2026-07-29, décision Julien) — repo dédié `pbx-agents`
+- **Nouveau canal = repo dédié `julienfarinep-hash/pbx-agents`, à la RACINE, branche `main`.**
+- Ancien canal `CLAUDE/pbx-agents/` = **gelé** (les 70 fichiers y ont été recopiés tels quels).
+- **OPS et CHECK : mettez à jour votre helper** — remplacer dans `~/.pbx_gh.py` :
+  `REPO='CLAUDE'; PREFIX='pbx-agents'`  →  `REPO='pbx-agents'` **sans préfixe** (fichiers à la racine),
+  et ajouter `branch='main'` (`?ref=main` en GET, `"branch":"main"` dans le payload PUT).
+  Le PAT couvre déjà `pbx-agents` (même owner). Après bascule : `pull` doit ramener 70 fichiers.
+
 ## Canal unique
-- Dépôt **`julienfarinep-hash/CLAUDE`**, dossier **`pbx-agents/`** (branche par défaut `claude/ios-app-web-check-2s6og3`).
+- Dépôt **`julienfarinep-hash/pbx-agents`**, **racine**, branche **`main`**.
 - Le dossier local `/home/julien/discussion` n'est plus le canal : c'est au mieux une **copie de travail** que
   chaque agent **synchronise** avec GitHub (pas de `git` sur le poste → **API GitHub**).
 
@@ -21,7 +29,7 @@
 - Numérotation incrémentale conservée ; statut en tête de tâche (ouverte / TRAITÉE / …).
 
 ## Outillage (sans git)
-- Accès via API GitHub avec un PAT (permission **Contents: Read and write** sur `CLAUDE`).
+- Accès via API GitHub avec un PAT (permission **Contents: Read and write** sur `pbx-agents`).
 - MAIN utilise `~/.pbx_gh.py` (`ls` / `pull` / `push <fichiers>` / `get <nom>`).
 - OPS et CHECK : même principe côté leurs sessions (token + helper API).
 
