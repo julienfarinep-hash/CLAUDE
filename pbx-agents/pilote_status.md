@@ -4,7 +4,7 @@
 **Approche** : stack **conteneurisée** `pbx-cloud` (edge Kamailio+rtpengine en host + 1 Asterisk 21/tenant, bridge 172.28.0.0/24)
 **Pilote (MAIN)** : orchestration OPS + CHECK via `/home/julien/discussion`
 **CANAL = GitHub `CLAUDE/pbx-agents/`** (depuis 2026-07-29 — voir PROTOCOLE_ECHANGE.md). Le dossier local n'est plus le canal.
-**Dernière mise à jour** : 2026-07-29 — sortant : socket :5070 OK, 482=CSeq → Option B (auth Asterisk) en application
+**Dernière mise à jour** : 2026-07-29 — SORTANT: 482 réglé (200 OK), reste audio+CLI ; entrant à tester
 
 ## Bascule canal
 - ✅ **OPS opérationnel sur GitHub** (ops_ready_github.md) — pull/push OK, reprend **ops_task_017** (fix sortant
