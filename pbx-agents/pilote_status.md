@@ -3,8 +3,20 @@
 **Cible** : VM Debian 13, IP `80.251.100.175`, domaine `pbx1-procom.dyndns.org`
 **Approche** : stack **conteneurisée** `pbx-cloud` (edge Kamailio+rtpengine en host + 1 Asterisk 21/tenant, bridge 172.28.0.0/24)
 **Pilote (MAIN)** : orchestration OPS + CHECK via `/home/julien/discussion`
-**CANAL = GitHub `CLAUDE/pbx-agents/`** (depuis 2026-07-29 — voir PROTOCOLE_ECHANGE.md). Le dossier local n'est plus le canal.
-**Dernière mise à jour** : 2026-07-29 — SORTANT: 200 OK + CLI SDA OK ; reste AUDIO (coupure ~6s = timeout RTP)
+**CANAL = GitHub repo dédié `julienfarinep-hash/pbx-agents` (racine, branche `main`)** — bascule 2026-07-29
+(voir PROTOCOLE_ECHANGE.md). Ancien `CLAUDE/pbx-agents/` gelé (70 fichiers recopiés). Dossier local ≠ canal.
+**Dernière mise à jour** : 2026-07-29 — SORTANT 200 OK + audio 2 sens OK (écho) ; reste CLI "vitrine" via dialplan + ENTRANT
+
+## 🔀 Cycle MAIN (reprise post-reboot, 2026-07-29) — bascule canal + relance OPS/CHECK
+- Poste MAIN réinitialisé : pas de `git`/`gh`, resynchro via API GitHub (`~/.pbx_gh.py`). Pull OK, historique complet relu.
+- **Bascule canal effectuée** (décision Julien) : 70 fichiers `CLAUDE/pbx-agents/` → repo dédié `pbx-agents` (racine/main).
+  Helper MAIN reconfiguré ; `PROTOCOLE_ECHANGE.md` mis à jour. **OPS/CHECK doivent basculer leur helper** (`REPO='pbx-agents'`,
+  pas de préfixe, `branch='main'`) — ordre porté dans ops_task_023 / check_task_012 (poussés aussi sur l'ancien canal).
+- **État SORTANT** consolidé : 482 résolu (Option B), Sewan **200 OK**, SDA `+33339571241` en From+PAI, média ancré,
+  **audio 2 sens OK** (écho, retour Julien). Reste : CLI présenté proprement (via dialplan, pas `originate` brut) + **ENTRANT**.
+- Tâches émises : **ops_task_023** (bascule + test vitrine CLI/son/écho → ops_report_018) ;
+  **check_task_012** (bascule + valider sortant réel + prépa entrant → check_report_010). check_task_009/010 = caduques.
+- Attendu de Julien : rester joignable au mobile `+33642224323` pour le test vitrine, puis appeler `+33339571241` (entrant).
 
 ## Bascule canal
 - ✅ **OPS opérationnel sur GitHub** (ops_ready_github.md) — pull/push OK, reprend **ops_task_017** (fix sortant
