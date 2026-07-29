@@ -3,7 +3,7 @@
 **Émise par** : MAIN — 2026-07-29
 **Déclencheur** : parution de `ops_report_010.md` (ignoreip posé + edge :5070).
 **Priorité** : haute
-**Statut** : en attente signal OPS
+**Statut** : TRAITÉE — voir check_report_007.md (2026-07-29) — GO
 
 ## Contexte
 Après incident (ban fail2ban de l'IP admin, résolu) : l'edge a été recréé avec la socket trunk `:5070`.
